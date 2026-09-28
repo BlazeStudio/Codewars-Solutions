@@ -86,7 +86,6 @@ LANGS = {
 }
 PANDAS = Lang('python/pandas', '.ipynb', '#')
 
-# Как иногда подписывают блоки кода в описаниях -> id языка Codewars
 LANG_ALIASES = {
     'py': 'python', 'python3': 'python', 'sh': 'shell', 'bash': 'shell',
     'c++': 'cpp', 'js': 'javascript', 'ts': 'typescript', 'golang': 'go',
