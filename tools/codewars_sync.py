@@ -6,13 +6,15 @@
   2. обход https://www.codewars.com/users/<user>/completed_solutions со всеми страницами;
   3. для каждой каты берём название, сложность и код каждого языка;
   4. описание и ссылку берём из API Codewars (то же, что на странице каты);
-  5. каты, которые уже есть в репозитории (по ссылке или по названию), пропускаем.
+  5. каты, которые уже есть в репозитории (по ссылке или по названию), пропускаем;
+  6. пересобираем в README.md статистику и списки решений по языкам.
 
 Файлы кладутся в <язык>/[<библиотека>/][N kyu] Название.<расширение>.
 
 Запуск:
   python tools/codewars_sync.py              # синхронизировать
   python tools/codewars_sync.py --dry-run    # только показать, что будет создано
+  python tools/codewars_sync.py --readme-only  # только обновить README, без входа
   python tools/codewars_sync.py --html page.html --dry-run   # без логина, по сохранённой странице
 
 Настройки берутся из .env в корне репозитория (см. .env.example).
@@ -27,6 +29,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 import warnings
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -547,6 +550,154 @@ def target_path(root: Path, sol: Solution) -> Path:
 
 
 # ---------------------------------------------------------------------------
+# README: статистика и список решений по языкам
+
+README_START = '<!-- codewars-stats:start -->'
+README_END = '<!-- codewars-stats:end -->'
+LANG_TITLES = {
+    'python': 'Python', 'c++': 'C++', 'c': 'C', 'c#': 'C#', 'go': 'Go', 'shell': 'Shell',
+    'sql': 'SQL', 'java': 'Java', 'javascript': 'JavaScript', 'typescript': 'TypeScript',
+    'kotlin': 'Kotlin', 'rust': 'Rust', 'php': 'PHP', 'ruby': 'Ruby', 'r': 'R',
+    'powershell': 'PowerShell', 'nasm': 'NASM',
+}
+
+
+@dataclass
+class ReadmeEntry:
+    rank: str
+    name: str
+    path: Path
+    kata_id: str | None
+    library: str | None  # подпапка вроде pandas / pure
+
+    @property
+    def rank_order(self) -> tuple[int, str]:
+        m = re.match(r'(\d+)\s*(kyu|dan)', self.rank)
+        if not m:
+            return 100, self.name.lower()  # beta и прочее — в конец
+        n = int(m.group(1))
+        return (n if m.group(2) == 'kyu' else -n), self.name.lower()
+
+
+def read_entries(root: Path, path: Path, known_names: dict[str, str],
+                 resolve_name) -> list[ReadmeEntry]:
+    """Каты в файле. Обычно одна; в файлах вида "[8 kyu].py" может быть несколько."""
+    rel = path.relative_to(root)
+    m = re.match(r'\[([^\]]*)\]\s*(.*)$', path.stem)
+    if not m:
+        return []
+    rank, file_name = m.group(1).strip(), m.group(2).strip()
+    library = rel.parts[1] if len(rel.parts) > 2 else None
+    content = path.read_text(encoding='utf-8', errors='ignore')
+
+    if file_name:
+        ids = KATA_ID_RE.findall(content)
+        kata_id = ids[0] if ids else None
+        name = known_names.get(kata_id) or header_name(content) or file_name
+        return [ReadmeEntry(rank, name, path, kata_id, library)]
+
+    # Сборный файл: название каты — ближайший комментарий над ссылкой
+    entries = []
+    lines = content.splitlines()
+    for i, line in enumerate(lines):
+        for kata_id in KATA_ID_RE.findall(line):
+            name = known_names.get(kata_id)
+            for prev in reversed(lines[max(0, i - 3):i]):
+                if name:
+                    break
+                comment = re.match(r'^\s*(?:#|//|--|;)+\s*(.*?)\s*$', prev)
+                if not comment:
+                    if prev.strip():
+                        break  # над ссылкой код — названия нет
+                    continue
+                if comment.group(1) and 'codewars.com' not in comment.group(1):
+                    name = comment.group(1)
+            entries.append(ReadmeEntry(rank, name or resolve_name(kata_id) or kata_id,
+                                       path, kata_id, library))
+    return entries
+
+
+def header_name(content: str) -> str | None:
+    """Название из шапки файла: 1 строка — "# Название", 2 строка — ссылка на кату."""
+    lines = content.splitlines()[:2]
+    if len(lines) < 2 or not KATA_ID_RE.search(lines[1]):
+        return None
+    name = re.sub(r'^\s*(#|//|--|;)+\s*', '', lines[0])
+    name = re.sub(r'^\[[^\]]*\]\s*', '', name).strip()
+    return name or None
+
+
+def is_grouped_file(path: Path) -> bool:
+    return re.fullmatch(r'\[[^\]]*\]\s*', path.stem) is not None
+
+
+def md_escape(text: str) -> str:
+    return re.sub(r'([\\|\[\]*_`<>])', r'\\\1', text)
+
+
+def build_readme_section(root: Path, user: str, known_names: dict[str, str], resolve_name) -> str:
+    by_lang: dict[str, dict[str, ReadmeEntry]] = {}
+    for path in sorted(root.rglob('*')):
+        rel = path.relative_to(root)
+        if (not path.is_file() or len(rel.parts) < 2
+                or rel.parts[0].startswith('.') or rel.parts[0] in IGNORED_DIRS):
+            continue
+        entries = by_lang.setdefault(rel.parts[0], {})
+        for entry in read_entries(root, path, known_names, resolve_name):
+            key = entry.kata_id or f'name:{norm_name(entry.name)}'
+            existing = entries.get(key)
+            # Если ката лежит и в сборном файле, и отдельным — показываем отдельный файл
+            if existing is None or (is_grouped_file(existing.path) and not is_grouped_file(entry.path)):
+                entries[key] = entry
+
+    langs = sorted((lang for lang in by_lang if by_lang[lang]),
+                   key=lambda lang: (-len(by_lang[lang]), lang))
+    total = len({key for entries in by_lang.values() for key in entries})
+
+    lines = [README_START, '', '## Статистика', '',
+             f'Профиль: [{user}](https://www.codewars.com/users/{user})', '',
+             '| Язык | Решено кат |', '|---|---:|']
+    for lang in langs:
+        lines.append(f'| {LANG_TITLES.get(lang, lang.capitalize())} | {len(by_lang[lang])} |')
+    lines += [f'| **Всего уникальных** | **{total}** |', '', '## Решения', '']
+
+    for lang in langs:
+        entries = sorted(by_lang[lang].values(), key=lambda e: e.rank_order)
+        title = LANG_TITLES.get(lang, lang.capitalize())
+        lines += ['<details>', f'<summary><b>{title}</b> — {len(entries)}</summary>', '',
+                  '| Сложность | Ката | Codewars |', '|---|---|---|']
+        for e in entries:
+            file_link = urllib.parse.quote(e.path.relative_to(root).as_posix())
+            name = f'[{md_escape(e.name)}]({file_link})'
+            if e.library and e.library != 'pure':
+                name += f' `{e.library}`'
+            kata = f'[ссылка]({BASE_URL}/kata/{e.kata_id})' if e.kata_id else ''
+            lines.append(f'| {e.rank} | {name} | {kata} |')
+        lines += ['', '</details>', '']
+    lines.append(README_END)
+    return '\n'.join(lines)
+
+
+def update_readme(root: Path, section: str) -> bool:
+    """Заменяет блок статистики в README.md (или создаёт README). Возвращает True, если что-то изменилось."""
+    readme = root / 'README.md'
+    if readme.exists():
+        text = readme.read_text(encoding='utf-8')
+        pattern = re.compile(re.escape(README_START) + '.*?' + re.escape(README_END), re.S)
+        new = pattern.sub(lambda _: section, text) if pattern.search(text) else text.rstrip() + '\n\n' + section + '\n'
+    else:
+        text = ''
+        new = ('# Codewars Solutions\n\n'
+               'Мои решения кат с [Codewars](https://www.codewars.com). '
+               'Файлы и этот README обновляются скриптом `tools/codewars_sync.py`.\n\n'
+               f'{section}\n')
+    if new == text:
+        return False
+    readme.write_text(new, encoding='utf-8', newline='\n')
+    return True
+
+
+# ---------------------------------------------------------------------------
 
 def load_env(path: Path) -> None:
     if not path.exists():
@@ -586,6 +737,8 @@ def main() -> int:
     parser.add_argument('--dry-run', action='store_true', help='ничего не записывать, только показать')
     parser.add_argument('--limit', type=int, help='обработать не больше N новых решений')
     parser.add_argument('--delay', type=float, default=0.5, help='пауза между запросами, с')
+    parser.add_argument('--readme-only', action='store_true',
+                        help='только пересобрать README по файлам репозитория, без входа на Codewars')
     parser.add_argument('-v', '--verbose', action='store_true', help='показывать и пропущенные каты')
     args = parser.parse_args()
 
@@ -596,6 +749,32 @@ def main() -> int:
     user = args.user or os.environ.get('CODEWARS_USER') or 'BlazeStudio'
     root = args.root.resolve()
     cw = Codewars(args.delay)
+    kata_cache: dict[str, dict | None] = {}
+
+    def get_kata(kata_id: str) -> dict | None:
+        if kata_id not in kata_cache:
+            kata_cache[kata_id] = cw.fetch_kata(kata_id)
+        return kata_cache[kata_id]
+
+    def refresh_readme(known_names: dict[str, str]) -> None:
+        def resolve_name(kata_id: str) -> str | None:
+            try:
+                return (get_kata(kata_id) or {}).get('name')
+            except Exception as e:
+                log.warning('Не удалось узнать название каты %s: %s', kata_id, e)
+                return None
+
+        section = build_readme_section(root, user, known_names, resolve_name)
+        if args.dry_run:
+            log.info('README: dry-run, не обновляю')
+        elif update_readme(root, section):
+            log.info('README.md обновлён')
+        else:
+            log.info('README.md без изменений')
+
+    if args.readme_only:
+        refresh_readme({})
+        return 0
 
     try:
         if args.html:
@@ -630,14 +809,11 @@ def main() -> int:
     if args.limit is not None:
         todo = todo[:args.limit]
 
-    kata_cache: dict[str, dict | None] = {}
     created, failed = 0, 0
     for n, sol in enumerate(todo, 1):
         log.info('[%d/%d] (осталось %d) %s', n, len(todo), len(todo) - n, sol.title)
         try:
-            if sol.kata_id not in kata_cache:
-                kata_cache[sol.kata_id] = cw.fetch_kata(sol.kata_id)
-            kata = kata_cache[sol.kata_id]
+            kata = get_kata(sol.kata_id)
             if kata is None:
                 log.warning('  описание не найдено (ката удалена?), сохраняю только код')
                 kata = {}
@@ -666,6 +842,7 @@ def main() -> int:
 
     log.info('Готово: %s %d, пропущено (уже были) %d, ошибок %d',
              'будет создано' if args.dry_run else 'создано', created, skipped, failed)
+    refresh_readme({s.kata_id: s.name for s in solutions})
     return 1 if failed else 0
 
 
