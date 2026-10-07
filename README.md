@@ -10,17 +10,17 @@
 
 | Язык | Решено кат |
 |---|---:|
-| Shell | 50 |
-| Python | 37 |
+| Shell | 67 |
+| Python | 39 |
 | SQL | 4 |
 | C++ | 3 |
 | Go | 3 |
-| **Всего уникальных** | **96** |
+| **Всего уникальных** | **115** |
 
 ## Решения
 
 <details>
-<summary><b>Shell</b> — 50</summary>
+<summary><b>Shell</b> — 67</summary>
 
 | Сложность | Ката | Codewars |
 |---|---|---|
@@ -67,18 +67,35 @@
 | 5 kyu | [Weight for weight](shell/%5B5%20kyu%5D%20Weight%20for%20weight.sh) | [ссылка](https://www.codewars.com/kata/55c6126177c9441a570000cc) |
 | 5 kyu | [Weird prime generator](shell/%5B5%20kyu%5D%20Weird%20prime%20generator.sh) | [ссылка](https://www.codewars.com/kata/562b384167350ac93b00010c) |
 | 5 kyu | [Which x for that sum?](shell/%5B5%20kyu%5D%20Which%20x%20for%20that%20sum.sh) | [ссылка](https://www.codewars.com/kata/5b1cd19fcd206af728000056) |
+| 6 kyu | [1/n- Cycle](shell/%5B6%20kyu%5D%201_n-%20Cycle.sh) | [ссылка](https://www.codewars.com/kata/5a057ec846d843c81a0000ad) |
+| 6 kyu | [A floating-point system](shell/%5B6%20kyu%5D%20A%20floating-point%20system.sh) | [ссылка](https://www.codewars.com/kata/5df754981f177f0032259090) |
+| 6 kyu | [Binaries](shell/%5B6%20kyu%5D%20Binaries.sh) | [ссылка](https://www.codewars.com/kata/5d98b6b38b0f6c001a461198) |
+| 6 kyu | [Catalog](shell/%5B6%20kyu%5D%20Catalog.sh) | [ссылка](https://www.codewars.com/kata/59d9d8cb27ee005972000045) |
+| 6 kyu | [Crack the PIN](shell/%5B6%20kyu%5D%20Crack%20the%20PIN.sh) | [ссылка](https://www.codewars.com/kata/5efae11e2d12df00331f91a6) |
+| 6 kyu | [Error correction #1 - Hamming Code](shell/%5B6%20kyu%5D%20Error%20correction%20%231%20-%20Hamming%20Code.sh) | [ссылка](https://www.codewars.com/kata/5ef9ca8b76be6d001d5e1c3e) |
+| 6 kyu | [Errors : histogram](shell/%5B6%20kyu%5D%20Errors%20histogram.sh) | [ссылка](https://www.codewars.com/kata/59f44c7bd4b36946fd000052) |
+| 6 kyu | [Experimenting with a sequence of complex numbers](shell/%5B6%20kyu%5D%20Experimenting%20with%20a%20sequence%20of%20complex%20numbers.sh) | [ссылка](https://www.codewars.com/kata/5b06c990908b7eea73000069) |
+| 6 kyu | [Magnitude](shell/%5B6%20kyu%5D%20Magnitude.sh) | [ссылка](https://www.codewars.com/kata/5cc70653658d6f002ab170b5) |
+| 6 kyu | [Meeting](shell/%5B6%20kyu%5D%20Meeting.sh) | [ссылка](https://www.codewars.com/kata/59df2f8f08c6cec835000012) |
+| 6 kyu | [Positions Average](shell/%5B6%20kyu%5D%20Positions%20Average.sh) | [ссылка](https://www.codewars.com/kata/59f4a0acbee84576800000af) |
+| 6 kyu | [Primorial Of a Number](shell/%5B6%20kyu%5D%20Primorial%20Of%20a%20Number.sh) | [ссылка](https://www.codewars.com/kata/5a99a03e4a6b34bb3c000124) |
+| 6 kyu | [Reversing a Process](shell/%5B6%20kyu%5D%20Reversing%20a%20Process.sh) | [ссылка](https://www.codewars.com/kata/5dad6e5264e25a001918a1fc) |
+| 6 kyu | [Sort Strings by Most Contiguous Vowels](shell/%5B6%20kyu%5D%20Sort%20Strings%20by%20Most%20Contiguous%20Vowels.sh) | [ссылка](https://www.codewars.com/kata/5d2d0d34bceae80027bffddb) |
+| 6 kyu | [Sums of Parts](shell/%5B6%20kyu%5D%20Sums%20of%20Parts.sh) | [ссылка](https://www.codewars.com/kata/5ce399e0047a45001c853c2b) |
+| 8 kyu | [Bash Basics - While Loop](shell/%5B8%20kyu%5D%20Bash%20Basics%20-%20While%20Loop.sh) | [ссылка](https://www.codewars.com/kata/582cd9033c1acf1d45000052) |
 | 8 kyu | [Century From Year](shell/%5B8%20kyu%5D%20Century%20From%20Year.sh) | [ссылка](https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097) |
 | 8 kyu | [Even or Odd](shell/%5B8%20kyu%5D%20Even%20or%20Odd.sh) | [ссылка](https://www.codewars.com/kata/53da3dbb4a5168369a0000fe) |
 | 8 kyu | [Expressions Matter](shell/%5B8%20kyu%5D%20Expressions%20Matter.sh) | [ссылка](https://www.codewars.com/kata/5ae62fcf252e66d44d00008e) |
 | 8 kyu | [Grasshopper - Check for factor](shell/%5B8%20kyu%5D%20Grasshopper%20-%20Check%20for%20factor.sh) | [ссылка](https://www.codewars.com/kata/55cbc3586671f6aa070000fb) |
 | 8 kyu | [Third Angle of a Triangle](shell/%5B8%20kyu%5D%20Third%20Angle%20of%20a%20Triangle.sh) | [ссылка](https://www.codewars.com/kata/5a023c426975981341000014) |
+| 8 kyu | [Twice as old](shell/%5B8%20kyu%5D%20Twice%20as%20old.sh) | [ссылка](https://www.codewars.com/kata/5b853229cfde412a470000d0) |
 | 8 kyu | [Up and down, the string grows](shell/%5B8%20kyu%5D%20Up%20and%20down%2C%20the%20string%20grows.sh) | [ссылка](https://www.codewars.com/kata/644b17b56ed5527b09057987) |
 | beta | [Palindromic Factorization: Pure Bash vs. the Clock](shell/%5Bbeta%5D%20Palindromic%20Factorization%20Pure%20Bash%20vs.%20the%20Clock.sh) | [ссылка](https://www.codewars.com/kata/6aba7ed3f83fb3ab30958e88) |
 
 </details>
 
 <details>
-<summary><b>Python</b> — 37</summary>
+<summary><b>Python</b> — 39</summary>
 
 | Сложность | Ката | Codewars |
 |---|---|---|
@@ -115,7 +132,9 @@
 | 7 kyu | [Mumbling](python/pure/%5B7%20kyu%5D%20Mumbling.py) | [ссылка](https://www.codewars.com/kata/5667e8f4e3f572a8f2000039) |
 | 7 kyu | [Pandas Series 101: Rename Columns](python/pandas/%5B7%20kyu%5D%20Pandas%20Series%20101%20-%20Rename%20Columns.ipynb) `pandas` | [ссылка](https://www.codewars.com/kata/5e60cdcd01712200335bd676) |
 | 7 kyu | [Pandas Series 103: Filter Rows From DataFrames That Don't Satisfy Condition](python/pandas/%5B7%20kyu%5D%20Pandas%20Series%20103%20-%20Filter%20Rows%20From%20DataFrames%20That%20Don%27t%20Satisfy%20Condition.ipynb) `pandas` | [ссылка](https://www.codewars.com/kata/5ea2baed9345eb001e8ce394) |
+| 8 kyu | [\[BUG\] XCOM-409: Flight distance of Interceptor planes is miscalculated](python/pure/%5B8%20kyu%5D%20%5BBUG%5D%20XCOM-409%20Flight%20distance%20of%20Interceptor%20planes%20is%20miscalculated.py) | [ссылка](https://www.codewars.com/kata/67b7a527c9f842fd3b02adb8) |
 | 8 kyu | [Even or Odd](python/pure/%5B8%20kyu%5D%20Even%20or%20Odd.py) | [ссылка](https://www.codewars.com/kata/53da3dbb4a5168369a0000fe) |
+| 8 kyu | [Flick Switch](python/pure/%5B8%20kyu%5D%20Flick%20Switch.py) | [ссылка](https://www.codewars.com/kata/64fbfe2618692c2018ebbddb) |
 | 8 kyu | [Function 1 - hello world](python/pure/%5B8%20kyu%5D%20Function%201%20-%20hello%20world.py) | [ссылка](https://www.codewars.com/kata/523b4ff7adca849afe000035) |
 | 8 kyu | [Sum Arrays](python/pure/%5B8%20kyu%5D%20Sum%20Arrays.py) | [ссылка](https://www.codewars.com/kata/53dc54212259ed3d4f00071c) |
 | 8 kyu | [Will you make it?](python/pure/%5B8%20kyu%5D%20Will%20you%20make%20it.py) | [ссылка](https://www.codewars.com/kata/5861d28f124b35723e00005e) |
