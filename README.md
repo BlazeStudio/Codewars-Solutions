@@ -10,17 +10,17 @@
 
 | Язык | Решено кат |
 |---|---:|
-| Shell | 67 |
+| Shell | 80 |
 | Python | 39 |
 | SQL | 4 |
 | C++ | 3 |
 | Go | 3 |
-| **Всего уникальных** | **115** |
+| **Всего уникальных** | **128** |
 
 ## Решения
 
 <details>
-<summary><b>Shell</b> — 67</summary>
+<summary><b>Shell</b> — 80</summary>
 
 | Сложность | Ката | Codewars |
 |---|---|---|
@@ -69,19 +69,32 @@
 | 5 kyu | [Which x for that sum?](shell/%5B5%20kyu%5D%20Which%20x%20for%20that%20sum.sh) | [ссылка](https://www.codewars.com/kata/5b1cd19fcd206af728000056) |
 | 6 kyu | [1/n- Cycle](shell/%5B6%20kyu%5D%201_n-%20Cycle.sh) | [ссылка](https://www.codewars.com/kata/5a057ec846d843c81a0000ad) |
 | 6 kyu | [A floating-point system](shell/%5B6%20kyu%5D%20A%20floating-point%20system.sh) | [ссылка](https://www.codewars.com/kata/5df754981f177f0032259090) |
+| 6 kyu | [Address Book by State](shell/%5B6%20kyu%5D%20Address%20Book%20by%20State.sh) | [ссылка](https://www.codewars.com/kata/59d0ee709f0cbcf65400003b) |
+| 6 kyu | [Bash Basics - Find Number of files in a Directory](shell/%5B6%20kyu%5D%20Bash%20Basics%20-%20Find%20Number%20of%20files%20in%20a%20Directory.sh) | [ссылка](https://www.codewars.com/kata/584857c5a7878e993b0005cc) |
 | 6 kyu | [Binaries](shell/%5B6%20kyu%5D%20Binaries.sh) | [ссылка](https://www.codewars.com/kata/5d98b6b38b0f6c001a461198) |
 | 6 kyu | [Catalog](shell/%5B6%20kyu%5D%20Catalog.sh) | [ссылка](https://www.codewars.com/kata/59d9d8cb27ee005972000045) |
+| 6 kyu | [Character with longest consecutive repetition](shell/%5B6%20kyu%5D%20Character%20with%20longest%20consecutive%20repetition.sh) | [ссылка](https://www.codewars.com/kata/586d6cefbcc21eed7a001155) |
 | 6 kyu | [Crack the PIN](shell/%5B6%20kyu%5D%20Crack%20the%20PIN.sh) | [ссылка](https://www.codewars.com/kata/5efae11e2d12df00331f91a6) |
+| 6 kyu | [Disguised sequences (II)](shell/%5B6%20kyu%5D%20Disguised%20sequences%20%28II%29.sh) | [ссылка](https://www.codewars.com/kata/56fe17fcc25bf3e19a000292) |
+| 6 kyu | [Easy Balance Checking](shell/%5B6%20kyu%5D%20Easy%20Balance%20Checking.sh) | [ссылка](https://www.codewars.com/kata/59d727d40e8c9dd2dd00009f) |
 | 6 kyu | [Error correction #1 - Hamming Code](shell/%5B6%20kyu%5D%20Error%20correction%20%231%20-%20Hamming%20Code.sh) | [ссылка](https://www.codewars.com/kata/5ef9ca8b76be6d001d5e1c3e) |
 | 6 kyu | [Errors : histogram](shell/%5B6%20kyu%5D%20Errors%20histogram.sh) | [ссылка](https://www.codewars.com/kata/59f44c7bd4b36946fd000052) |
 | 6 kyu | [Experimenting with a sequence of complex numbers](shell/%5B6%20kyu%5D%20Experimenting%20with%20a%20sequence%20of%20complex%20numbers.sh) | [ссылка](https://www.codewars.com/kata/5b06c990908b7eea73000069) |
+| 6 kyu | [Financing a purchase](shell/%5B6%20kyu%5D%20Financing%20a%20purchase.sh) | [ссылка](https://www.codewars.com/kata/59c68ea2aeb2843e18000109) |
+| 6 kyu | [Floating-point Approximation (I)](shell/%5B6%20kyu%5D%20Floating-point%20Approximation%20%28I%29.sh) | [ссылка](https://www.codewars.com/kata/58184387d14fc32f2b0012b2) |
+| 6 kyu | [Floating-point Approximation (II)](shell/%5B6%20kyu%5D%20Floating-point%20Approximation%20%28II%29.sh) | [ссылка](https://www.codewars.com/kata/581ee0db1bbdd04e010002fd) |
 | 6 kyu | [Magnitude](shell/%5B6%20kyu%5D%20Magnitude.sh) | [ссылка](https://www.codewars.com/kata/5cc70653658d6f002ab170b5) |
 | 6 kyu | [Meeting](shell/%5B6%20kyu%5D%20Meeting.sh) | [ссылка](https://www.codewars.com/kata/59df2f8f08c6cec835000012) |
+| 6 kyu | [Moves in squared strings (II)](shell/%5B6%20kyu%5D%20Moves%20in%20squared%20strings%20%28II%29.sh) | [ссылка](https://www.codewars.com/kata/56dbe7f113c2f63570000b86) |
+| 6 kyu | [Moves in squared strings (III)](shell/%5B6%20kyu%5D%20Moves%20in%20squared%20strings%20%28III%29.sh) | [ссылка](https://www.codewars.com/kata/56dbeec613c2f63be4000be6) |
+| 6 kyu | [Moves in squared strings (IV)](shell/%5B6%20kyu%5D%20Moves%20in%20squared%20strings%20%28IV%29.sh) | [ссылка](https://www.codewars.com/kata/56dbf59b0a10feb08c000227) |
 | 6 kyu | [Positions Average](shell/%5B6%20kyu%5D%20Positions%20Average.sh) | [ссылка](https://www.codewars.com/kata/59f4a0acbee84576800000af) |
 | 6 kyu | [Primorial Of a Number](shell/%5B6%20kyu%5D%20Primorial%20Of%20a%20Number.sh) | [ссылка](https://www.codewars.com/kata/5a99a03e4a6b34bb3c000124) |
+| 6 kyu | [Reducing by steps](shell/%5B6%20kyu%5D%20Reducing%20by%20steps.sh) | [ссылка](https://www.codewars.com/kata/56efab15740d301ab40002ee) |
 | 6 kyu | [Reversing a Process](shell/%5B6%20kyu%5D%20Reversing%20a%20Process.sh) | [ссылка](https://www.codewars.com/kata/5dad6e5264e25a001918a1fc) |
 | 6 kyu | [Sort Strings by Most Contiguous Vowels](shell/%5B6%20kyu%5D%20Sort%20Strings%20by%20Most%20Contiguous%20Vowels.sh) | [ссылка](https://www.codewars.com/kata/5d2d0d34bceae80027bffddb) |
 | 6 kyu | [Sums of Parts](shell/%5B6%20kyu%5D%20Sums%20of%20Parts.sh) | [ссылка](https://www.codewars.com/kata/5ce399e0047a45001c853c2b) |
+| 6 kyu | [up AND down](shell/%5B6%20kyu%5D%20up%20AND%20down.sh) | [ссылка](https://www.codewars.com/kata/56cac350145912e68b0006f0) |
 | 8 kyu | [Bash Basics - While Loop](shell/%5B8%20kyu%5D%20Bash%20Basics%20-%20While%20Loop.sh) | [ссылка](https://www.codewars.com/kata/582cd9033c1acf1d45000052) |
 | 8 kyu | [Century From Year](shell/%5B8%20kyu%5D%20Century%20From%20Year.sh) | [ссылка](https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097) |
 | 8 kyu | [Even or Odd](shell/%5B8%20kyu%5D%20Even%20or%20Odd.sh) | [ссылка](https://www.codewars.com/kata/53da3dbb4a5168369a0000fe) |
