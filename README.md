@@ -10,17 +10,18 @@
 
 | Язык | Решено кат |
 |---|---:|
-| Shell | 130 |
+| Shell | 167 |
 | Python | 42 |
 | SQL | 4 |
 | C++ | 3 |
 | Go | 3 |
-| **Всего уникальных** | **181** |
+| Rust | 2 |
+| **Всего уникальных** | **219** |
 
 ## Решения
 
 <details>
-<summary><b>Shell</b> — 130</summary>
+<summary><b>Shell</b> — 167</summary>
 
 | Сложность | Ката | Codewars |
 |---|---|---|
@@ -114,6 +115,7 @@
 | 6 kyu | [Moves in squared strings (III)](shell/%5B6%20kyu%5D%20Moves%20in%20squared%20strings%20%28III%29.sh) | [ссылка](https://www.codewars.com/kata/56dbeec613c2f63be4000be6) |
 | 6 kyu | [Moves in squared strings (IV)](shell/%5B6%20kyu%5D%20Moves%20in%20squared%20strings%20%28IV%29.sh) | [ссылка](https://www.codewars.com/kata/56dbf59b0a10feb08c000227) |
 | 6 kyu | [Multi-tap Keypad Text Entry on an Old Mobile Phone](shell/%5B6%20kyu%5D%20Multi-tap%20Keypad%20Text%20Entry%20on%20an%20Old%20Mobile%20Phone.sh) | [ссылка](https://www.codewars.com/kata/54a2e93b22d236498400134b) |
+| 6 kyu | [Multiples of 3 or 5](shell/%5B6%20kyu%5D%20Multiples%20of%203%20or%205.sh) | [ссылка](https://www.codewars.com/kata/514b92a657cdc65150000006) |
 | 6 kyu | [Parabolic Arc Length](shell/%5B6%20kyu%5D%20Parabolic%20Arc%20Length.sh) | [ссылка](https://www.codewars.com/kata/562e274ceca15ca6e70000d3) |
 | 6 kyu | [PI approximation](shell/%5B6%20kyu%5D%20PI%20approximation.sh) | [ссылка](https://www.codewars.com/kata/550527b108b86f700000073f) |
 | 6 kyu | [Playing on a chessboard](shell/%5B6%20kyu%5D%20Playing%20on%20a%20chessboard.sh) | [ссылка](https://www.codewars.com/kata/55ab4f980f2d576c070000f4) |
@@ -139,12 +141,48 @@
 | 6 kyu | [up AND down](shell/%5B6%20kyu%5D%20up%20AND%20down.sh) | [ссылка](https://www.codewars.com/kata/56cac350145912e68b0006f0) |
 | 6 kyu | [Valid Phone Number](shell/%5B6%20kyu%5D%20Valid%20Phone%20Number.sh) | [ссылка](https://www.codewars.com/kata/525f47c79f2f25a4db000025) |
 | 6 kyu | [Which are in?](shell/%5B6%20kyu%5D%20Which%20are%20in.sh) | [ссылка](https://www.codewars.com/kata/550554fd08b86f84fe000a58) |
+| 7 kyu | [A Rule of Divisibility by 7](shell/%5B7%20kyu%5D%20A%20Rule%20of%20Divisibility%20by%207.sh) | [ссылка](https://www.codewars.com/kata/55e6f5e58f7817808e00002e) |
+| 7 kyu | [All Inclusive?](shell/%5B7%20kyu%5D%20All%20Inclusive.sh) | [ссылка](https://www.codewars.com/kata/5700c9acc1555755be00027e) |
 | 7 kyu | [Alphabetical Addition](shell/%5B7%20kyu%5D%20Alphabetical%20Addition.sh) | [ссылка](https://www.codewars.com/kata/5d50e3914861a500121e1958) |
+| 7 kyu | [Balanced Number (Special Numbers Series #1 )](shell/%5B7%20kyu%5D%20Balanced%20Number%20%28Special%20Numbers%20Series%20%231%20%29.sh) | [ссылка](https://www.codewars.com/kata/5a4e3782880385ba68000018) |
+| 7 kyu | [Bash Basics - Check for File Existence](shell/%5B7%20kyu%5D%20Bash%20Basics%20-%20Check%20for%20File%20Existence.sh) | [ссылка](https://www.codewars.com/kata/582d7d22081ed3342d0000a7) |
+| 7 kyu | [Beginner Series #3 Sum of Numbers](shell/%5B7%20kyu%5D%20Beginner%20Series%20%233%20Sum%20of%20Numbers.sh) | [ссылка](https://www.codewars.com/kata/55f2b110f61eb01779000053) |
 | 7 kyu | [Cats and shelves](shell/%5B7%20kyu%5D%20Cats%20and%20shelves.sh) | [ссылка](https://www.codewars.com/kata/62c93765cef6f10030dfa92b) |
+| 7 kyu | [Convert month name to number](shell/%5B7%20kyu%5D%20Convert%20month%20name%20to%20number.sh) | [ссылка](https://www.codewars.com/kata/58a2d1fdd7f6c7e51b000076) |
+| 7 kyu | [Count the Digit](shell/%5B7%20kyu%5D%20Count%20the%20Digit.sh) | [ссылка](https://www.codewars.com/kata/566fc12495810954b1000030) |
+| 7 kyu | [Drying Potatoes](shell/%5B7%20kyu%5D%20Drying%20Potatoes.sh) | [ссылка](https://www.codewars.com/kata/58ce8725c835848ad6000007) |
+| 7 kyu | [Easy Line](shell/%5B7%20kyu%5D%20Easy%20Line.sh) | [ссылка](https://www.codewars.com/kata/56e7d40129035aed6c000632) |
+| 7 kyu | [Easy wallpaper](shell/%5B7%20kyu%5D%20Easy%20wallpaper.sh) | [ссылка](https://www.codewars.com/kata/567501aec64b81e252000003) |
+| 7 kyu | [Exes and Ohs](shell/%5B7%20kyu%5D%20Exes%20and%20Ohs.sh) | [ссылка](https://www.codewars.com/kata/55908aad6620c066bc00002a) |
 | 7 kyu | [Floating-point Approximation (III)](shell/%5B7%20kyu%5D%20Floating-point%20Approximation%20%28III%29.sh) | [ссылка](https://www.codewars.com/kata/5b0c0ec907756ffcff00006e) |
+| 7 kyu | [Folding your way to the moon](shell/%5B7%20kyu%5D%20Folding%20your%20way%20to%20the%20moon.sh) | [ссылка](https://www.codewars.com/kata/58f0ba42e89aa6158400000e) |
+| 7 kyu | [Going to the cinema](shell/%5B7%20kyu%5D%20Going%20to%20the%20cinema.sh) | [ссылка](https://www.codewars.com/kata/562f91ff6a8b77dfe900006e) |
+| 7 kyu | [Growth of a Population](shell/%5B7%20kyu%5D%20Growth%20of%20a%20Population.sh) | [ссылка](https://www.codewars.com/kata/563b662a59afc2b5120000c6) |
+| 7 kyu | [Hero's root](shell/%5B7%20kyu%5D%20Hero%27s%20root.sh) | [ссылка](https://www.codewars.com/kata/55efecb8680f47654c000095) |
+| 7 kyu | [How Green Is My Valley?](shell/%5B7%20kyu%5D%20How%20Green%20Is%20My%20Valley.sh) | [ссылка](https://www.codewars.com/kata/56e3cd1d93c3d940e50006a4) |
+| 7 kyu | [Looking for a benefactor](shell/%5B7%20kyu%5D%20Looking%20for%20a%20benefactor.sh) | [ссылка](https://www.codewars.com/kata/569b5cec755dd3534d00000f) |
+| 7 kyu | [Maximum Length Difference](shell/%5B7%20kyu%5D%20Maximum%20Length%20Difference.sh) | [ссылка](https://www.codewars.com/kata/5663f5305102699bad000056) |
 | 7 kyu | [Maximum Multiple](shell/%5B7%20kyu%5D%20Maximum%20Multiple.sh) | [ссылка](https://www.codewars.com/kata/5aba780a6a176b029800041c) |
+| 7 kyu | [Moves in squared strings (I)](shell/%5B7%20kyu%5D%20Moves%20in%20squared%20strings%20%28I%29.sh) | [ссылка](https://www.codewars.com/kata/56dbe0e313c2f63be4000b25) |
+| 7 kyu | [Mumbling](shell/%5B7%20kyu%5D%20Mumbling.sh) | [ссылка](https://www.codewars.com/kata/5667e8f4e3f572a8f2000039) |
 | 7 kyu | [Odd or Even? Determine that!](shell/%5B7%20kyu%5D%20Odd%20or%20Even%20Determine%20that%21.sh) | [ссылка](https://www.codewars.com/kata/619f200fd0ff91000eaf4a08) |
 | 7 kyu | [Over The Road](shell/%5B7%20kyu%5D%20Over%20The%20Road.sh) | [ссылка](https://www.codewars.com/kata/5f0ed36164f2bc00283aed07) |
+| 7 kyu | [Parts of a list](shell/%5B7%20kyu%5D%20Parts%20of%20a%20list.sh) | [ссылка](https://www.codewars.com/kata/56f3a1e899b386da78000732) |
+| 7 kyu | [Printer Errors](shell/%5B7%20kyu%5D%20Printer%20Errors.sh) | [ссылка](https://www.codewars.com/kata/56541980fa08ab47a0000040) |
+| 7 kyu | [Return a list of files filtered by file extension](shell/%5B7%20kyu%5D%20Return%20a%20list%20of%20files%20filtered%20by%20file%20extension.sh) | [ссылка](https://www.codewars.com/kata/582a4f4ab94351397d000006) |
+| 7 kyu | [Return the latest modified file](shell/%5B7%20kyu%5D%20Return%20the%20latest%20modified%20file.sh) | [ссылка](https://www.codewars.com/kata/59bfe5f15227ddf81900007b) |
+| 7 kyu | [Reverser](shell/%5B7%20kyu%5D%20Reverser.sh) | [ссылка](https://www.codewars.com/kata/58069e4cf3c13ef3a6000168) |
+| 7 kyu | [Rotate for a Max](shell/%5B7%20kyu%5D%20Rotate%20for%20a%20Max.sh) | [ссылка](https://www.codewars.com/kata/56a4872cbb65f3a610000026) |
+| 7 kyu | [Show multiples of 2 numbers within a range](shell/%5B7%20kyu%5D%20Show%20multiples%20of%202%20numbers%20within%20a%20range.sh) | [ссылка](https://www.codewars.com/kata/583989556754d6f4c700018e) |
+| 7 kyu | [Simple beads count](shell/%5B7%20kyu%5D%20Simple%20beads%20count.sh) | [ссылка](https://www.codewars.com/kata/58712dfa5c538b6fc7000569) |
+| 7 kyu | [Simple Fun #2: Circle of Numbers](shell/%5B7%20kyu%5D%20Simple%20Fun%20%232%20Circle%20of%20Numbers.sh) | [ссылка](https://www.codewars.com/kata/58841cb52a077503c4000015) |
+| 7 kyu | [Speed Control](shell/%5B7%20kyu%5D%20Speed%20Control.sh) | [ссылка](https://www.codewars.com/kata/56484848ba95170a8000004d) |
+| 7 kyu | [String Reversing, Changing case, etc.](shell/%5B7%20kyu%5D%20String%20Reversing%2C%20Changing%20case%2C%20etc.sh) | [ссылка](https://www.codewars.com/kata/58305403aeb69a460b00019a) |
+| 7 kyu | [Sum of angles](shell/%5B7%20kyu%5D%20Sum%20of%20angles.sh) | [ссылка](https://www.codewars.com/kata/5a03b3f6a1c9040084001765) |
+| 7 kyu | [Sum of odd numbers](shell/%5B7%20kyu%5D%20Sum%20of%20odd%20numbers.sh) | [ссылка](https://www.codewars.com/kata/55fd2d567d94ac3bc9000064) |
+| 7 kyu | [Target Date](shell/%5B7%20kyu%5D%20Target%20Date.sh) | [ссылка](https://www.codewars.com/kata/569218bc919ccba77000000b) |
+| 7 kyu | [Two to One](shell/%5B7%20kyu%5D%20Two%20to%20One.sh) | [ссылка](https://www.codewars.com/kata/5656b6906de340bd1b0000ac) |
+| 7 kyu | [What time is it in Japan ?](shell/%5B7%20kyu%5D%20What%20time%20is%20it%20in%20Japan.sh) | [ссылка](https://www.codewars.com/kata/59c53183aeb2842585000116) |
 | 8 kyu | [Bash Basics - While Loop](shell/%5B8%20kyu%5D%20Bash%20Basics%20-%20While%20Loop.sh) | [ссылка](https://www.codewars.com/kata/582cd9033c1acf1d45000052) |
 | 8 kyu | [Century From Year](shell/%5B8%20kyu%5D%20Century%20From%20Year.sh) | [ссылка](https://www.codewars.com/kata/5a3fe3dde1ce0e8ed6000097) |
 | 8 kyu | [Even or Odd](shell/%5B8%20kyu%5D%20Even%20or%20Odd.sh) | [ссылка](https://www.codewars.com/kata/53da3dbb4a5168369a0000fe) |
@@ -238,6 +276,16 @@
 | 4 kyu | [Elevator Action!](go/%5B4%20kyu%5D%20Elevator%20Action%21.go) | [ссылка](https://www.codewars.com/kata/654cdf611d68c91228af27f1) |
 | 4 kyu | [Longest Palindromic Substring (Linear)](go/%5B4%20kyu%5D%20Longest%20Palindromic%20Substring%20%28Linear%29.go) | [ссылка](https://www.codewars.com/kata/5dcde0b9fcb0d100349cb5c0) |
 | 6 kyu | [Split Strings](go/%5B6%20kyu%5D%20Split%20Strings.go) | [ссылка](https://www.codewars.com/kata/515de9ae9dcfc28eb6000001) |
+
+</details>
+
+<details>
+<summary><b>Rust</b> — 2</summary>
+
+| Сложность | Ката | Codewars |
+|---|---|---|
+| 7 kyu | [Split by Mask](rust/%5B7%20kyu%5D%20Split%20by%20Mask.rs) | [ссылка](https://www.codewars.com/kata/6a68ed7894f29599a1f7a248) |
+| 8 kyu | [Was the package received before it was sent? (Simplified)](rust/%5B8%20kyu%5D%20Was%20the%20package%20received%20before%20it%20was%20sent%20%28Simplified%29.rs) | [ссылка](https://www.codewars.com/kata/6707688c0f597511f6649270) |
 
 </details>
 

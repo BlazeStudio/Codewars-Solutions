@@ -1,0 +1,28 @@
+// Was the package received before it was sent? (Simplified)
+// https://www.codewars.com/kata/6707688c0f597511f6649270
+
+// This kata explores simplified time zones
+//
+// Given tz_from, tz_to, start and duration, return a boolean that answers this question:
+// - "Was the package received the day before it was sent?"
+//
+// Details
+// Time zones are represented by integers -11 to +12 inclusive (including zero), one zone per hour for a total of 24 zones in one day. This simplification ignores zones below -11 and above +12, 30- and 45-minute offsets, daylight savings, and time folds.
+//
+// A package is sent between two time zones: tz_from and tz_to, initiated at local hour start (integer between 0 to 23, 24hr clock). The delivery takes duration hours to complete (integer between 0 to 24, inclusive).
+//
+// Examples
+//
+// Eg 1.
+// Given tz_from=3, tz_to=0, start=13, duration=1, return False. A package sent at 13:00 from time zone 3 takes 1 hour to be delivered to time zone 0. The package is received at 11:00 local time, the same day it was sent. Return "False" as it was not received the day before it was sent.
+//
+// Eg 2.
+// Given tz_from=12, tz_to=-3, start=5, duration=8, return True. A package sent at 05:00 from time zone 12 takes 8 hours to be delivered to time zone -3. The package is received at 22:00 local time, the day before it was sent. Return "True" as it was received the day before it was sent.
+
+fn was_package_received_yesterday(tz_from: i32, tz_to: i32, start: i32, duration: i32) -> bool {
+    let start_utc = start - tz_from;
+    let arrival_utc = start_utc + duration;
+    let arrival_local = arrival_utc + tz_to;
+    let days_passed = arrival_local.div_euclid(24) - start.div_euclid(24);
+    days_passed < 0
+}
