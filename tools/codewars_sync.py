@@ -9,7 +9,7 @@
   5. каты, которые уже есть в репозитории (по ссылке или по названию), пропускаем;
   6. пересобираем в README.md статистику и списки решений по языкам.
 
-Файлы кладутся в <язык>/[<библиотека>/][N kyu] Название.<расширение>.
+Файлы кладутся в solutions/<язык>/[<библиотека>/][N kyu] Название.<расширение>.
 
 Запуск:
   python tools/codewars_sync.py              # синхронизировать
@@ -44,11 +44,11 @@ DEBUG_DIR = REPO_ROOT / '.debug'
 USER_AGENT = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
               '(KHTML, like Gecko) Chrome/140.0 Safari/537.36')
 
+SOLUTIONS_DIR = 'solutions'  # все каты лежат в solutions/<язык>/...
+
 KATA_ID_RE = re.compile(r'codewars\.com/kata/([0-9a-f]{24})')
 # Ссылка на кату в заголовке решения: на сайте относительная (/kata/<id>), в сохранённой странице — полная
 KATA_HREF_RE = re.compile(r'/kata/([0-9a-f]{24})/?$')
-# Папки, которые не относятся к решениям
-IGNORED_DIRS = {'tools'}
 
 log = logging.getLogger('codewars')
 
@@ -518,21 +518,17 @@ class RepoIndex:
     """Что уже лежит в репозитории: ссылки на каты и названия файлов по папкам языков."""
 
     def __init__(self, root: Path):
-        self.root = root
+        self.base = root / SOLUTIONS_DIR
         self.ids: set[tuple[str, str]] = set()
         self.names: set[tuple[str, str]] = set()
         files = 0
-        for path in root.rglob('*'):
-            rel = path.relative_to(root)
-            if (not path.is_file() or len(rel.parts) < 2
-                    or rel.parts[0].startswith('.') or rel.parts[0] in IGNORED_DIRS):
-                continue
+        for path in iter_solution_files(root):
             files += 1
             self.add(path, path.read_text(encoding='utf-8', errors='ignore'))
-        log.info('В репозитории %d файлов, известно %d решений по ссылкам', files, len(self.ids))
+        log.info('В %s/ %d файлов, известно %d решений по ссылкам', SOLUTIONS_DIR, files, len(self.ids))
 
     def add(self, path: Path, content: str) -> None:
-        top = path.relative_to(self.root).parts[0]
+        top = path.relative_to(self.base).parts[0]
         for kata_id in KATA_ID_RE.findall(content):
             self.ids.add((top, kata_id))
         m = re.match(r'\[[^\]]*\]\s*(.+)$', path.stem)
@@ -544,9 +540,21 @@ class RepoIndex:
         return (top, sol.kata_id) in self.ids or (top, norm_name(sol.name)) in self.names
 
 
+def iter_solution_files(root: Path):
+    """Файлы решений: solutions/<язык>/[<библиотека>/]<файл>."""
+    base = root / SOLUTIONS_DIR
+    if not base.is_dir():
+        return
+    for path in sorted(base.rglob('*')):
+        rel = path.relative_to(base)
+        if path.is_file() and len(rel.parts) >= 2 and not any(p.startswith('.') for p in rel.parts):
+            yield path
+
+
 def target_path(root: Path, sol: Solution) -> Path:
     lang = sol.lang
-    return root / lang.folder / f'[{sol.rank or "beta"}] {safe_filename(sol.name)}{lang.ext}'
+    return (root / SOLUTIONS_DIR / lang.folder
+            / f'[{sol.rank or "beta"}] {safe_filename(sol.name)}{lang.ext}')
 
 
 # ---------------------------------------------------------------------------
@@ -582,7 +590,7 @@ class ReadmeEntry:
 def read_entries(root: Path, path: Path, known_names: dict[str, str],
                  resolve_name) -> list[ReadmeEntry]:
     """Каты в файле. Обычно одна; в файлах вида "[8 kyu].py" может быть несколько."""
-    rel = path.relative_to(root)
+    rel = path.relative_to(root / SOLUTIONS_DIR)
     m = re.match(r'\[([^\]]*)\]\s*(.*)$', path.stem)
     if not m:
         return []
@@ -637,12 +645,9 @@ def md_escape(text: str) -> str:
 
 def build_readme_section(root: Path, user: str, known_names: dict[str, str], resolve_name) -> str:
     by_lang: dict[str, dict[str, ReadmeEntry]] = {}
-    for path in sorted(root.rglob('*')):
-        rel = path.relative_to(root)
-        if (not path.is_file() or len(rel.parts) < 2
-                or rel.parts[0].startswith('.') or rel.parts[0] in IGNORED_DIRS):
-            continue
-        entries = by_lang.setdefault(rel.parts[0], {})
+    for path in iter_solution_files(root):
+        language = path.relative_to(root / SOLUTIONS_DIR).parts[0]
+        entries = by_lang.setdefault(language, {})
         for entry in read_entries(root, path, known_names, resolve_name):
             key = entry.kata_id or f'name:{norm_name(entry.name)}'
             existing = entries.get(key)
